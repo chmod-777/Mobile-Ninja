@@ -22,6 +22,12 @@ public class MainActivity extends ActionBarActivity {
         encodedHash = Uri.encode("#");
     }
 
+    public void ussdIntent(String ussdCode) {
+        Intent callIntent = new Intent(Intent.ACTION_CALL);
+        callIntent.setData(Uri.parse(ussdCode));
+        startActivity(callIntent);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,9 +49,7 @@ public class MainActivity extends ActionBarActivity {
                         switch (ussdCode) {
 
                             case "Check Airtime":
-                                Intent callIntent = new Intent(Intent.ACTION_CALL);
-                                callIntent.setData(Uri.parse("tel:*125" + encodedHash));
-                                startActivity(callIntent);
+                                ussdIntent("tel:*125" + encodedHash);
                                 break;
                             case "Buy Whatsapp Bundle":
                                 break;
