@@ -52,16 +52,22 @@ public class MainActivity extends ActionBarActivity {
                                 ussdIntent("tel:*125" + encodedHash);
                                 break;
                             case "Buy Whatsapp Bundle":
+                                ussdIntent("tel:*143" + encodedHash);
                                 break;
                             case "Buy Facebook Bundle":
+                                ussdIntent("tel:*143" + encodedHash);
                                 break;
                             case "Buy Data Bundle":
+                                ussdIntent("tel:*140*1" + encodedHash);
                                 break;
                             case "Buy SMS Bundle":
+                                ussdIntent("tel:*140*4*2" + encodedHash);
                                 break;
                             case "Send Call Me Back":
+                                ussdIntent("tel:*140*2" + encodedHash); // *140*2*0782114571# to directly call me back or *555*0782114571#
                                 break;
                             case "Ecocash":
+                                ussdIntent("tel:*151" + encodedHash);
                                 break;
 
                         }
