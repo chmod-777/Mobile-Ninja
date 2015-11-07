@@ -1,5 +1,6 @@
 package com.webgems.mint.mobileninja;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -10,9 +11,16 @@ import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
+import android.net.Uri;
 
 
 public class MainActivity extends ActionBarActivity {
+
+    String encodedHash;
+
+    {
+        encodedHash = Uri.encode("#");
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +29,7 @@ public class MainActivity extends ActionBarActivity {
 
         String[] ussdCodes = {"Check Airtime", "Buy Whatsapp Bundle", "Buy Facebook Bundle", "Buy Data Bundle", "Buy SMS Bundle", "Send Call me back", "Ecocash"};
 
-        ListAdapter myAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, ussdCodes);
+        ListAdapter myAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, ussdCodes);
         ListView ussdListView = (ListView) findViewById(R.id.ussdListView);
         ussdListView.setAdapter(myAdapter);
 
@@ -32,6 +40,27 @@ public class MainActivity extends ActionBarActivity {
                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                         String ussdCode = String.valueOf(adapterView.getItemAtPosition(i));
 
+                        switch (ussdCode) {
+
+                            case "Check Airtime":
+                                Intent callIntent = new Intent(Intent.ACTION_CALL);
+                                callIntent.setData(Uri.parse("tel:*125" + encodedHash));
+                                startActivity(callIntent);
+                                break;
+                            case "Buy Whatsapp Bundle":
+                                break;
+                            case "Buy Facebook Bundle":
+                                break;
+                            case "Buy Data Bundle":
+                                break;
+                            case "Buy SMS Bundle":
+                                break;
+                            case "Send Call Me Back":
+                                break;
+                            case "Ecocash":
+                                break;
+
+                        }
                     }
                 }
         );
